@@ -24,10 +24,10 @@ export function ParkedDomainWithOfferField({ config }: ParkedDomainWithOfferFiel
         <div className="bg-white p-8 rounded-lg shadow-sm mb-12 transition-all duration-300">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
-              <Tag className="w-6 h-6 text-green-500 mr-3" />
+              <Tag className="w-6 h-6 text-green-600 mr-3" />
               <div>
                 <span className="text-sm text-gray-500 block">List Price</span>
-                <span className="md:text-3xl text-2xl font-medium text-green-500">
+                <span className="md:text-3xl text-2xl font-medium text-green-600">
                   {new Intl.NumberFormat(undefined, { style: 'currency', currency: config.currency }).format(config.listPrice)}
                 </span>
               </div>

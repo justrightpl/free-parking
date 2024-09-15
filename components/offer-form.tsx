@@ -153,7 +153,7 @@ export function OfferForm({ config, onSuccess }: OfferFormProps) {
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             className="inline-block"
           >
-            <CheckCircle2 className="w-12 h-12 text-green-500" />
+            <CheckCircle2 className="w-12 h-12 text-green-600" />
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0 }}
