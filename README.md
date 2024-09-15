@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# free-parking
+
+`free-parking` is a lightweight, free, open-source Next.js/React/Tailwind template for quickly spinning up "domain for sale" landing pages, cutting out the need for services like Afternic. Created by [@baileysimrell](https://github.com/baileysimrelll) of [@justrightpl](https://jutright.pl).
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and [v0.dev](https://v0.dev/chat).
 
 ## Getting Started
 
@@ -34,3 +38,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Support
+
+If you have any questions or need help with setup, please open an issue in the GitHub repository.
