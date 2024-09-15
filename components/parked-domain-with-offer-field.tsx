@@ -1,13 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
 import { Tag, ArrowRight, Github } from "lucide-react"
 import { SiteConfig } from "@/config/site"
+import { OfferForm } from '@/components/offer-form'
 
 interface ParkedDomainWithOfferFieldProps {
   config: SiteConfig
@@ -16,39 +13,12 @@ interface ParkedDomainWithOfferFieldProps {
 import { Toaster } from "@/components/ui/toaster"
 
 export function ParkedDomainWithOfferField({ config }: ParkedDomainWithOfferFieldProps) {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [offerAmount, setOfferAmount] = useState("")
-  const [message, setMessage] = useState("")
   const { toast } = useToast()
-
-  const handleOfferAmountBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
-    if (!isNaN(value)) {
-      const roundedValue = Math.round(value * 100) / 100;
-      setOfferAmount(roundedValue.toFixed(2));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", { name, email, offerAmount, message })
-    toast({
-      title: "Offer Sent",
-      description: "Thank you for your offer! We'll get back to you soon via email.",
-      variant: "default",
-    })
-    console.log("Toast called") // Add this line
-    setName("")
-    setEmail("")
-    setOfferAmount("")
-    setMessage("")
-  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100/80 text-gray-900">
       <main className="flex-grow container mx-auto px-4 py-16 md:py-24 max-w-2xl">
-        <h1 className="md:text-5xl text-3xl  font-medium mb-2 tracking-tight">{config.domain}</h1>
+        <h1 className="md:text-5xl text-3xl  font-bold mb-2 tracking-tight">{config.domain}</h1>
         <p className="md:text-xl text-lg  text-gray-500 mb-12">{config.description}</p>
         
         <div className="bg-white p-8 rounded-lg shadow-sm mb-12 transition-all duration-300">
@@ -67,45 +37,13 @@ export function ParkedDomainWithOfferField({ config }: ParkedDomainWithOfferFiel
         </div>
 
         {config.isSubmitOfferEnabled ? (
-          <form onSubmit={handleSubmit} className="space-y-4 mb-12">
-            <Input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300"
-            />
-            <Input
-              type="email"
-              placeholder="Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300"
-            />
-            <Input
-              type="number"
-              placeholder={`Your Offer Amount (${config.currency})`}
-              value={offerAmount}
-              onChange={(e) => setOfferAmount(e.target.value)}
-              onBlur={handleOfferAmountBlur}
-              required
-              min="0.01"
-              step="0.01"
-              className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300"
-            />
-            <Textarea
-              placeholder="Your Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-              className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300"
-            />
-            <Button type="submit" className="w-full bg-gray-900 hover:bg-gray-800 text-white transition-colors duration-300">
-              Submit Offer
-            </Button>
-          </form>
+          <OfferForm config={config} onSuccess={() => {
+            toast({
+              title: "Offer Sent",
+              description: "Thank you for your offer! We'll get back to you soon via email.",
+              variant: "default",
+            })
+          }} />
         ) : (
           <div className="text-center mb-12">
             <p className="text-lg text-gray-600">
@@ -141,13 +79,13 @@ export function ParkedDomainWithOfferField({ config }: ParkedDomainWithOfferFiel
         <div className="container mx-auto px-4 text-center text-gray-500 text-sm">
           <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
           <p className="mt-2 flex items-center justify-center">
-            <span>Powered by</span>
+            <span>Built with</span>
             <Link 
-              href={config.poweredBy.url}
+              href={config.githubRepo.url}
               className="inline-flex items-center ml-1 text-gray-700 hover:text-gray-900 transition-colors duration-300"
             >
               <Github className="w-4 h-4 mr-1" />
-              <span>{config.poweredBy.name}</span>
+              <span>{config.githubRepo.name}</span>
             </Link>
           </p>
         </div>

@@ -5,13 +5,14 @@ export interface SiteConfig {
   listPrice: number;
   currency: string;
   contactEmail: string;
+  emailFromDomain: string;
   metaDescription: string;
   ogImage: string;
   links: {
     name: string;
     url: string;
   }[];
-  poweredBy: {
+  githubRepo: {
     name: string;
     url: string;
   };
@@ -25,6 +26,7 @@ export const siteConfig: SiteConfig = {
   listPrice: 1000,
   currency: "USD",
   contactEmail: "sales@example.com",
+  emailFromDomain: "parkmydomain.org", // This is the email that will be used to send offer notifications to the domain owner ... also the one connected to Resend
   metaDescription: "Secure this domain today and start building your online presence.",
   ogImage: "https://example.com/og-image.jpg",
   links: [
@@ -33,7 +35,7 @@ export const siteConfig: SiteConfig = {
     { name: "Social", url: "https://www.twitter.com" },
     { name: "Shop", url: "https://www.amazon.com" },
   ],
-  poweredBy: {
+  githubRepo: {
     name: "free-parking",
     url: "https://github.com/justrightpl/free-parking",
   },
