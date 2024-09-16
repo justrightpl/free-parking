@@ -1,5 +1,14 @@
+// Helper function to get the current domain
+function getCurrentDomain(): string {
+  if (typeof window !== 'undefined') {
+    return window.location.hostname;
+  }
+  return process.env.NEXT_PUBLIC_VERCEL_URL || 'localhost';
+}
+
 export interface SiteConfig {
   domain: string;
+  useDynamicDomain: boolean;
   title: string;
   description: string;
   listPrice: number;
@@ -19,8 +28,13 @@ export interface SiteConfig {
   isSubmitOfferEnabled: boolean;
 }
 
-export const siteConfig: SiteConfig = {
+interface SiteConfigInternal extends SiteConfig {
+  _domain: string;
+}
+
+export const siteConfig: SiteConfigInternal = {
   domain: "example.com",
+  useDynamicDomain: true,
   title: "Premium Domain for Sale",
   description: "This domain is available for purchase",
   listPrice: 1000,
@@ -40,4 +54,22 @@ export const siteConfig: SiteConfig = {
     url: "https://github.com/justrightpl/free-parking",
   },
   isSubmitOfferEnabled: true,
+  _domain: "example.com", // Initialize the internal domain property
 };
+
+// Function to get the effective domain
+export function getEffectiveDomain(): string {
+  return siteConfig.useDynamicDomain ? getCurrentDomain() : siteConfig.domain;
+}
+
+// Override the domain property with a getter and setter
+Object.defineProperty(siteConfig, 'domain', {
+  get: function(this: SiteConfigInternal) {
+    return this.useDynamicDomain ? getCurrentDomain() : this._domain;
+  },
+  set: function(this: SiteConfigInternal, value: string) {
+    this._domain = value;
+  },
+  enumerable: true,
+  configurable: true
+});
