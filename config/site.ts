@@ -32,8 +32,10 @@ interface SiteConfigInternal extends SiteConfig {
   _domain: string;
 }
 
+const defaultDomain = "example.com";
+
 export const siteConfig: SiteConfigInternal = {
-  domain: "example.com",
+  domain: defaultDomain,
   useDynamicDomain: false,
   title: "Premium Domain for Sale",
   description: "This domain is available for purchase",
@@ -42,7 +44,7 @@ export const siteConfig: SiteConfigInternal = {
   currencySymbol: "$",
   contactEmail: "sales@example.com",
   metaDescription: "Secure this domain today and start building your online presence.",
-  ogImage: "https://example.com/og-image.jpg",
+  ogImage: `https://${defaultDomain}/og-image.jpg`,
   links: [
     { name: "Search", url: "https://www.google.com" },
     { name: "News", url: "https://news.ycombinator.com" },
@@ -54,7 +56,7 @@ export const siteConfig: SiteConfigInternal = {
     url: "https://github.com/justrightpl/free-parking",
   },
   isSubmitOfferEnabled: true,
-  _domain: "example.com", // Initialize the internal domain property
+  _domain: defaultDomain,
 };
 
 // Function to get the effective domain
