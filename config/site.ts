@@ -34,7 +34,7 @@ interface SiteConfigInternal extends SiteConfig {
 
 export const siteConfig: SiteConfigInternal = {
   domain: "example.com",
-  useDynamicDomain: true,
+  useDynamicDomain: false,
   title: "Premium Domain for Sale",
   description: "This domain is available for purchase",
   listPrice: 1000,
