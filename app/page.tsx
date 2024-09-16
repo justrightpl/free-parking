@@ -1,5 +1,5 @@
 "use client"
-import { ParkedDomainWithOfferField }  from "@/components/parked-domain-with-offer-field"
+import { ParkedDomainWithOfferField }  from "@/components/parked-domain-with-offer-form"
 import { siteConfig } from "@/config/site"
 
 export default function Home() {

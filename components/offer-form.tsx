@@ -7,13 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { SiteConfig } from "@/config/site"
 import { CheckCircle2 } from "lucide-react"
-
+import { InputPrefix } from "@/components/ui/input-prefix"
+import { siteConfig } from "@/config/site"
 interface OfferFormProps {
   config: SiteConfig
   onSuccess: () => void
 }
 
-export function OfferForm({ config, onSuccess }: OfferFormProps) {
+export function OfferForm({ onSuccess }: OfferFormProps) {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
@@ -112,17 +113,20 @@ export function OfferForm({ config, onSuccess }: OfferFormProps) {
             required
             className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300"
           />
-          <Input
-            type="number"
-            placeholder={`Your Offer Amount (${config.currency})`}
-            value={offerAmount}
-            onChange={(e) => setOfferAmount(e.target.value)}
-            onBlur={handleOfferAmountBlur}
-            required
-            min="0.01"
-            step="0.01"
-            className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300"
-          />
+          <div className="relative">
+            <InputPrefix>{siteConfig.currencySymbol}</InputPrefix>
+            <Input
+              type="number"
+              placeholder="Your Offer Amount"
+              value={offerAmount}
+              onChange={(e) => setOfferAmount(e.target.value)}
+              onBlur={handleOfferAmountBlur}
+              required
+              min="0.01"
+              step="0.01"
+              className="bg-white border-gray-200 focus:border-gray-500 transition-colors duration-300 pl-6"
+            />
+          </div>
           <Textarea
             placeholder="Your Message"
             value={message}

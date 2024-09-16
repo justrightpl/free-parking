@@ -8,10 +8,11 @@ interface OfferEmailProps {
     offerAmount: string;
     message: string;
     domain: string;
+    currencySymbol: string;
   }
 
 export const OwnerNotificationEmail: React.FC<Readonly<OfferEmailProps>> = ({
-    firstName, lastName, email, offerAmount, message, domain
+    firstName, lastName, email, offerAmount, message, domain, currencySymbol
 }) => (
   <Html>
     <Head />
@@ -21,7 +22,7 @@ export const OwnerNotificationEmail: React.FC<Readonly<OfferEmailProps>> = ({
         <Text style={paragraph}>
           Name: {firstName} {lastName}<br />
           Email: {email}<br />
-          Offer Amount: {offerAmount}<br />
+          Offer Amount: {currencySymbol}{offerAmount}<br />
           Message: {message}
         </Text>
       </Container>
@@ -30,7 +31,7 @@ export const OwnerNotificationEmail: React.FC<Readonly<OfferEmailProps>> = ({
 );
 
 export const SubmitterConfirmationEmail: React.FC<Readonly<OfferEmailProps>> = ({
-    firstName, offerAmount, domain
+    firstName, offerAmount, domain, currencySymbol
 }) => (
   <Html>
     <Head />
@@ -41,7 +42,7 @@ export const SubmitterConfirmationEmail: React.FC<Readonly<OfferEmailProps>> = (
           Dear {firstName},
         </Text>
         <Text style={paragraph}>
-          Your offer of ${offerAmount} for {domain} has been received. We appreciate your interest.
+          Your offer of {currencySymbol}{offerAmount} for {domain} has been received. We appreciate your interest.
         </Text>
         <Text style={paragraph}>
           We will contact you soon with further information or to discuss your offer.

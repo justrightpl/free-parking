@@ -4,8 +4,8 @@ export interface SiteConfig {
   description: string;
   listPrice: number;
   currency: string;
+  currencySymbol: string;
   contactEmail: string;
-  emailFromDomain: string;
   metaDescription: string;
   ogImage: string;
   links: {
@@ -25,8 +25,8 @@ export const siteConfig: SiteConfig = {
   description: "This domain is available for purchase",
   listPrice: 1000,
   currency: "USD",
+  currencySymbol: "$",
   contactEmail: "sales@example.com",
-  emailFromDomain: "parkmydomain.org", // This is the email that will be used to send offer notifications to the domain owner ... also the one connected to Resend
   metaDescription: "Secure this domain today and start building your online presence.",
   ogImage: "https://example.com/og-image.jpg",
   links: [
