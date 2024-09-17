@@ -1,6 +1,6 @@
 # free-parking
 
-`free-parking` is a lightweight, free, open-source Next.js/React/Tailwind template for quickly spinning up "domain for sale" landing pages, cutting out the need for services like Afternic. Created by [@baileysimrell](https://github.com/baileysimrelll) of [@justrightpl](https://jutright.pl).
+`free-parking` is a lightweight, free, open-source Next.js/React/Tailwind template for quickly spinning up "domain for sale" landing pages, cutting out the need for services like Afternic. Created by [@baileysimrell](https://github.com/baileysimrelll) of [@justrightpl](https://justright.pl).
 
 ![Free Parking App Screenshot](https://cdn.prod.website-files.com/60ca4a4b1629ce06182a97e6/66e78d7e3afa2e6d06b47406_freeparking.vercel.app_.png)
 
